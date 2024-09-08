@@ -1,0 +1,8 @@
+{
+    "busStops": [
+      {"id": 1, "parada": "Faculdade de Letras", "latitude": -21.774639, "longitude": -43.370316},
+      {"id": 2, "parada": "Parada B", "latitude": -21.765432, "longitude": -43.350123},
+      {"id": 3, "parada": "Parada C", "latitude": -21.767890, "longitude": -43.348761},
+      {"id": 4, "parada": "Parada D", "latitude": -21.769876, "longitude": -43.347654}
+    ]
+}
