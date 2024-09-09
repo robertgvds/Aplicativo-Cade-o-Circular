@@ -1,8 +1,13 @@
-
 import 'package:cadeocircularv5/app_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'tema_notifier.dart';  // Substitua pelo nome do arquivo onde `TemaNotifier` está definido
 
-main() {
-  runApp(MyApp());
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => TemaNotifier(),
+      child: MyApp(),
+    ),
+  );
 }
