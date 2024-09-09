@@ -20,7 +20,7 @@ class TemaNotifier extends ChangeNotifier {
     _themeData = _darkTheme
         ? ThemeData.dark().copyWith(
             primaryColor: Colors.red,
-            scaffoldBackgroundColor: Colors.black, colorScheme: ColorScheme.dark(primary: Colors.red).copyWith(surface: Colors.black),
+            scaffoldBackgroundColor: const Color.fromARGB(255, 25, 25, 25), colorScheme: ColorScheme.dark(primary: Colors.red).copyWith(surface: const Color.fromARGB(255, 25, 25, 25)),
           )
         : ThemeData.light().copyWith(
             primaryColor: Colors.red,

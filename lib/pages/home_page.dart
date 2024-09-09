@@ -1,11 +1,27 @@
 import 'package:cadeocircularv5/pages/bottom_page.dart';
+import 'package:cadeocircularv5/pages/bus_page.dart';
+import 'package:cadeocircularv5/pages/map_page.dart';
 import 'package:cadeocircularv5/tema_notifier.dart';
-import 'package:cadeocircularv5/widgets/map_widget.dart';
 import 'package:cadeocircularv5/widgets/navigationbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedOption = 0;
+
+  void onOptionSelected(int option) {
+    setState(() {
+      _selectedOption = option;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
@@ -14,19 +30,16 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Cadê o Circular?',
-          style: TextStyle(color: isDarkMode ? Colors.red : Colors.white),
+          style: TextStyle(color: isDarkMode ? Colors.black : Colors.white),
         ),
         centerTitle: true,
         backgroundColor: Colors.red,
         actions: [
-          Switch(
-            activeTrackColor: Colors.black,
-            activeColor: Colors.red,
-            value: Provider.of<TemaNotifier>(context).themeData.brightness == Brightness.dark,
-            onChanged: (value) {
-              Provider.of<TemaNotifier>(context, listen: false).toggleTheme();
-            },
-          )
+          IconButton(
+              icon: Icon(Icons.nightlight_round, color: Theme.of(context).colorScheme.surface,),
+              onPressed: () {
+                Provider.of<TemaNotifier>(context, listen: false).toggleTheme();
+          })
         ],
       ),
       body: SizedBox(
@@ -35,7 +48,7 @@ class HomePage extends StatelessWidget {
         child: Stack(
           alignment: Alignment.topCenter,
           children: <Widget>[
-            MapWidget(),
+            (_selectedOption == 0) ? MapPage() : BusPage(),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 100),
               child: Container(
@@ -51,7 +64,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: Navigation(),
+                child: Navigation(onOptionSelected: onOptionSelected),
               ),
             ),
           ],

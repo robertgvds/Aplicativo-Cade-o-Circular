@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';// Substitua pelo nome correto do arquivo
 
 class Navigation extends StatefulWidget {
-  const Navigation({super.key});
+  final Function(int) onOptionSelected;
+
+  const Navigation({super.key, required this.onOptionSelected});
 
   @override
   State<Navigation> createState() => _NavigationState();
@@ -9,10 +11,15 @@ class Navigation extends StatefulWidget {
 
 class _NavigationState extends State<Navigation> {
   int currentPageIndex = 0;
+  
   NavigationDestinationLabelBehavior labelBehavior =
       NavigationDestinationLabelBehavior.onlyShowSelected;
 
   void _onItemTapped(int index) {
+    setState(() {
+      currentPageIndex = index;
+    });
+    widget.onOptionSelected(index);
   }
 
   @override
@@ -37,11 +44,7 @@ class _NavigationState extends State<Navigation> {
         backgroundColor: Colors.transparent,
         labelBehavior: labelBehavior,
         selectedIndex: currentPageIndex,
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
+        onDestinationSelected: _onItemTapped,
         destinations: const <NavigationDestination>[
           NavigationDestination(
             icon: Icon(Icons.explore),
