@@ -1,3 +1,5 @@
+import 'package:cadeocircularv5/load_bus.dart';
+import 'package:cadeocircularv5/pages/parada_page.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -25,24 +27,25 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> imageSliders = imgList
+    final List<Widget> paradasBus = LoadBus.getParadasData()
     .map((item) => Container(
-          child: Container(
-            margin: const EdgeInsets.all(5.0),
-            child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(25.0)),
-                child: Stack(
-                  children: <Widget>[
-                    Container(color: Theme.of(context).colorScheme.surface),
-                  ],
-                )),
-          ),
-        ))
+      margin: const EdgeInsets.all(5.0),
+      child: ClipRRect(
+          borderRadius: const BorderRadius.all(Radius.circular(25.0)),
+          child: Stack(
+            children: <Widget>[
+              Container(
+                color: Theme.of(context).colorScheme.surface,
+                child: const ParadaPage(),
+              ),
+            ],
+          )),
+    ))
     .toList();
 
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       CarouselSlider(
-        items: imageSliders,
+        items: paradasBus,
         carouselController: _controller,
         options: CarouselOptions(
             autoPlay: true,
