@@ -1,5 +1,4 @@
 import 'package:cadeocircularv5/listBus.dart';
-import 'package:cadeocircularv5/widgets/navigationbar_widget.dart';
 import 'package:flutter/material.dart';
 
 class BusPage extends StatefulWidget {
@@ -10,11 +9,8 @@ class BusPage extends StatefulWidget {
 }
 
 class _BusPageState extends State<BusPage> {
-  int _selectedOption = 0;
-
   void onOptionSelected(int option) {
     setState(() {
-      _selectedOption = option;
     });
   }
 
