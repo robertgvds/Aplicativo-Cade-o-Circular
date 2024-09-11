@@ -1,8 +1,8 @@
-import 'package:cadeocircularv5/pages/bottom_page.dart';
-import 'package:cadeocircularv5/pages/bus_page.dart';
-import 'package:cadeocircularv5/pages/map_page.dart';
+import 'package:cadeocircularv5/pages/card_page/bottom_page.dart';
+import 'package:cadeocircularv5/pages/home_page/bus_page.dart';
+import 'package:cadeocircularv5/pages/home_page/map_page.dart';
 import 'package:cadeocircularv5/tema_notifier.dart';
-import 'package:cadeocircularv5/widgets/navigationbar_widget.dart';
+import 'package:cadeocircularv5/pages/home_page/widgets/navigationbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
         child: Stack(
           alignment: Alignment.topCenter,
           children: <Widget>[
-            (_selectedOption == 0) ? MapPage() : BusPage(),
+            (_selectedOption == 0) ? const MapPage() : const BusPage(),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 100),
               child: Container(
@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
           showModalBottomSheet<void>(
             context: context,
             builder: (BuildContext context) {
-              return BottomPage();
+              return const BottomPage(idParada: 0);
             },
           );
         },

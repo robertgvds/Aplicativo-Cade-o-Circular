@@ -1,4 +1,4 @@
-import 'package:cadeocircularv5/widgets/map_widget.dart';
+import 'package:cadeocircularv5/pages/home_page/widgets/map_widget.dart';
 import 'package:flutter/material.dart';
 
 class MapPage extends StatefulWidget {
@@ -17,6 +17,6 @@ class _MapPageState extends State<MapPage> {
   
   @override
   Widget build(BuildContext context) {
-    return MapWidget();
+    return const MapWidget();
   }
 }

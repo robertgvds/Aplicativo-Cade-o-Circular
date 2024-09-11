@@ -1,4 +1,4 @@
-import 'package:cadeocircularv5/listBus.dart';
+import 'package:cadeocircularv5/pages/home_page/widgets/listBus.dart';
 import 'package:flutter/material.dart';
 
 class BusPage extends StatefulWidget {
@@ -16,7 +16,7 @@ class _BusPageState extends State<BusPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return const Padding(
       padding: EdgeInsets.only(top: 100),
       child: ListBus(
 

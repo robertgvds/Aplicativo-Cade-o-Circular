@@ -1,23 +1,30 @@
+import 'package:cadeocircularv5/bus_stops_provider.dart';
 import 'package:flutter/material.dart';
 
 class ParadaPage extends StatefulWidget {
-  const ParadaPage({super.key});
+  final int idParada;  // Defina um campo para armazenar o idParada
+
+  const ParadaPage({super.key, required this.idParada});  // Utilize o "this.idParada" no construtor
 
   @override
   State<ParadaPage> createState() => _ParadaPageState();
 }
 
 class _ParadaPageState extends State<ParadaPage> {
+
   @override
   Widget build(BuildContext context) {
+    // Acesse o idParada através de widget.idParada
+    var busStop = BusStopsProvider.getBusStops().elementAt(widget.idParada);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Parada x",
+          busStop['parada'],
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 25.0,
-            shadows: [Shadow(color: Colors.grey, blurRadius: 5.0, )],
+            fontSize: 20.0,
+            shadows: const [Shadow(color: Colors.grey, blurRadius: 5.0, )],
             color: Theme.of(context).colorScheme.primary
             ),
           ),
@@ -25,7 +32,7 @@ class _ParadaPageState extends State<ParadaPage> {
       ),
       body: Container(),
       floatingActionButton: FloatingActionButton.extended(
-        label: Text("Ver mais"),
+        label: const Text("Ver mais"),
         onPressed: () {}
       ),
     );
