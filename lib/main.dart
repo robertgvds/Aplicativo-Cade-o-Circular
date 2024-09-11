@@ -7,7 +7,7 @@ void main() {
   runApp(
     ChangeNotifierProvider(
       create: (context) => TemaNotifier(),
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }

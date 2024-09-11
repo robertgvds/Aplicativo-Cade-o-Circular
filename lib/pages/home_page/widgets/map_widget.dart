@@ -156,7 +156,7 @@ class _MapWidgetState extends State<MapWidget> with SingleTickerProviderStateMix
             backgroundColor: Theme.of(context).colorScheme.surface,
             onPositionChanged: (position, hasGesture) {
               if (!_isWithinLimits(position.center)) {
-                _mapController?.move(_currentCenter, position.zoom);
+                _mapController.move(_currentCenter, position.zoom);
               }
             },
           ),
